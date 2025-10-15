@@ -2,7 +2,7 @@ class Solution {
     public int searchInsert(int[] nums, int target) {
         
         
-        // Brute force method
+        //----------------------------------- Brute force method------------------------------------------
 
         // for(int i=0; i<nums.length;i++){
         //     if(nums[i]>=target){
@@ -14,7 +14,7 @@ class Solution {
         // return nums.length;
 
 
-        //  optimized solution
+        // ----------------------------------- optimized solution-----------------------------------------
 
         int left =0;
         int right = nums.length-1;
