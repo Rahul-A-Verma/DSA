@@ -1,7 +1,5 @@
 class Solution {
     public int[] shuffle(int[] nums, int n) {
-       int p1=nums[0];
-      int p2=n+2;
        int[] ans= new int[2*n];
        for(int i=0;i<nums.length;i++){
         if(i%2==0){
