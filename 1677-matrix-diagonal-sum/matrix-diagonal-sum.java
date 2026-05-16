@@ -3,14 +3,13 @@ class Solution {
         int sum=0;
         int mid = mat.length / 2;
         for(int i=0;i<mat.length;i++){
-            for(int j=0;j<mat[i].length;j++){
-                if(i==j || i+j ==mat.length-1){
-                    sum+=mat[i][j];
-                }
-               
+               sum+=mat[i][i];
+               sum+= mat[i][mat.length-1-i];
             }
-            
-        }
-        return sum;
+            if(mat.length%2!=0){
+                sum-=mat[mid][mid];
+            }
+                return sum;
+        
     }
 }
