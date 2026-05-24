@@ -1,20 +1,22 @@
 class Solution {
     public int maximumPopulation(int[][] logs) {
-        int[] years=new int[101];
+        int[] arr = new int[101];
 
-          for(int[] log : logs){
-            years[log[0] - 1950]++;
-            years[log[1] - 1950]--;
+        for(int i=0;i<logs.length;i++){
+            arr[logs[i][0]-1950]++;
+             arr[logs[i][1]-1950]--;
         }
-        int max = 0, current = 0, year = 0; 
-        for(int i = 1; i <= 100; i++){
-            current += years[i];  //using prefix sum
-            if(current > max){
-                max = current;
-                year = i;
+        int max=0;
+        int current=0;
+        int year =0;
+
+        for(int i=0;i<100;i++){
+            current +=arr[i];
+            if(current>max){
+                max=current;
+                year=i;
             }
-            
         }
-        return year +  1950; 
+        return year +1950;
     }
 }
