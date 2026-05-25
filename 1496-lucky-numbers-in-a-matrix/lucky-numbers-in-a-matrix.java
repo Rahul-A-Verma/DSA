@@ -25,15 +25,8 @@ class Solution {
             }
             maxarr.add(max);
         }
-
-        Set<Integer> set = new HashSet<>(minarr);
-        List<Integer> commonElements = new ArrayList<>();
-        for (int num : maxarr) {
-    if (set.contains(num)) {
-        commonElements.add(num);
-    }
-}
-        return commonElements;
+            minarr.retainAll(maxarr); 
+        return minarr;
 
     }
 }
