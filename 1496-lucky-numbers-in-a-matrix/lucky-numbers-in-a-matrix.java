@@ -1,33 +1,33 @@
 class Solution {
     public List<Integer> luckyNumbers(int[][] matrix) {
-        List<Integer> ans = new ArrayList<>();
+    
+           List<Integer> arr = new ArrayList<>();
+          
+          for(int i=0;i<matrix.length;i++){
+            int mincol=0;
 
-        int rows = matrix.length;
-        int cols = matrix[0].length;
-
-        for (int i = 0; i < rows; i++) {
-            int minCol = 0;
-
-            for (int j = 1; j < cols; j++) {
-                if (matrix[i][j] < matrix[i][minCol]) {
-                    minCol = j;
+            for(int j=1;j<matrix[i].length;j++){
+                if(matrix[i][j]<matrix[i][mincol]){
+                    mincol=j;
                 }
             }
 
-            boolean isLucky = true;
+            boolean lucky = true;
 
-            for (int r = 0; r < rows; r++) {
-                if (matrix[r][minCol] > matrix[i][minCol]) {
-                    isLucky = false;
+            for(int r=0;r<matrix.length;r++){
+                if(matrix[r][mincol]>matrix[i][mincol]){
+                    lucky=false;
                     break;
                 }
             }
 
-            if (isLucky) {
-                ans.add(matrix[i][minCol]);
+            if(lucky){
+                arr.add(matrix[i][mincol]);
             }
-        }
 
-        return ans;
+
+          }
+          return arr;
+
     }
 }
