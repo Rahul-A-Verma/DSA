@@ -4,9 +4,6 @@ class Solution {
            List<Integer> minarr = new ArrayList<>();
            List<Integer> maxarr = new ArrayList<>();
 
-        int rows = matrix.length;
-        int cols = matrix[0].length;
-
         for(int i=0;i<matrix.length;i++){
                int min=Integer.MAX_VALUE;
             for(int j=0;j<matrix[0].length;j++){
