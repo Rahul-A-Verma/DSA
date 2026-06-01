@@ -17,8 +17,8 @@ class Solution {
         if(result==-1){
             return letters[0];
         }
-
+        else{
            return letters[result];
-        
+        }
     }
 }
