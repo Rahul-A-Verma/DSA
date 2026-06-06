@@ -10,14 +10,10 @@ class Solution {
         int mid = low + (high - low) / 2;
         int count = 0;
         
-        // 1. Count pairs in the left half and right half recursively
         count += mergeSort(nums, low, mid);
         count += mergeSort(nums, mid + 1, high);
-        
-        // 2. Count cross pairs between left and right halves
         count += countPairs(nums, low, mid, high);
         
-        // 3. Merge the two sorted halves
         merge(nums, low, mid, high);
         
         return count;
@@ -27,7 +23,6 @@ class Solution {
         int count = 0;
         int right = mid + 1;
         
-        // Use a two-pointer approach to find reverse pairs efficiently
         for (int i = low; i <= mid; i++) {
             while (right <= high && (long) nums[i] > 2 * (long) nums[right]) {
                 right++;
