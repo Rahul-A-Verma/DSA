@@ -1,9 +1,13 @@
 class Solution {
-    public int[] buildArray(int[] nums) {
-        int[] ans = new int[nums.length];
-        for(int i=0;i<nums.length;i++){
-            ans[i]=nums[nums[i]];
+    public void BArecursion(int[] num, int start){
+        if(start<num.length){
+            int temp = num[num[start]];
+            BArecursion(num, start+1);
+            num[start]=temp;
         }
-        return ans;
+    }
+    public int[] buildArray(int[] nums) {
+       BArecursion(nums,0);
+       return nums;
     }
 }
