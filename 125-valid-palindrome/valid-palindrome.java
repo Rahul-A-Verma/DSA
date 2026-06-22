@@ -1,13 +1,15 @@
 class Solution {
-  
+    public boolean isAlphaNum(char c){
+        return (c>='a' && c<='z') || (c>='A' && c<='Z') || (c>='0' && c<='9');
+    }
     public boolean isPalindrome(String s) {
         int l=0;
         int r =s.length()-1;
         while(l<r){
-            if(!Character.isLetterOrDigit(s.charAt(l))){
+            if(!isAlphaNum(s.charAt(l))){
                 l++;
             }
-            else if(!Character.isLetterOrDigit(s.charAt(r))){
+            else if(!isAlphaNum(s.charAt(r))){
                 r--;
             }
             else{
