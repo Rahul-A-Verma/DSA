@@ -1,24 +1,23 @@
 class Solution {
-    public boolean palin(String s, int l, int r){
-        while(l<r){
-            if(s.charAt(l)!=s.charAt(r)){
-                return false;
+    public int palin(String s, int l, int r){
+        int count =0;
+        while(l>=0 && r<s.length() && s.charAt(l)==s.charAt(r)){
+            count++;
+                l--;
+                r++;
             }
-            else{
-                l++;
-                r--;
-            }
+            return count;
         }
-        return true;
-    }
     public int countSubstrings(String s) {
         int count = 0;
+       
         for(int i=0;i<s.length();i++){
-            for(int j=i;j<s.length();j++){
-                if(palin(s,i,j)){
-                    count++;
-                }
-            }
+            int odd =palin(s, i ,i);
+            int even=palin(s,i,i+1);
+        
+            count +=odd+even;
+
+            
         }
         return count;
     }
