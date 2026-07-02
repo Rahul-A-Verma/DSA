@@ -3,22 +3,15 @@ class Solution {
         if (s.length() != t.length()) {
             return false;
         }
-        HashMap<Character, Integer> charCounts = new HashMap<>();
+        int[] charCounts = new int[26];
+        
         for (int i = 0; i < s.length(); i++) {
-            char ch = s.charAt(i);
-            charCounts.put(ch, charCounts.getOrDefault(ch, 0) + 1);
+            charCounts[s.charAt(i) - 'a']++;
+            charCounts[t.charAt(i) - 'a']--;
         }
         
-        for (int i = 0; i < t.length(); i++) {
-            char ch = t.charAt(i);
-            
-            if (!charCounts.containsKey(ch)) {
-                return false;
-            }
-            
-            charCounts.put(ch, charCounts.get(ch) - 1);
-            
-            if (charCounts.get(ch) < 0) {
+        for (int count : charCounts) {
+            if (count != 0) {
                 return false;
             }
         }
