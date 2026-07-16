@@ -19,24 +19,28 @@ class Node {
 */
 
 class Solution {
-    private HashMap<Node, Node> visited = new HashMap<>();
     public Node cloneGraph(Node node) {
+        HashMap<Node, Node> visited = new HashMap<>();
+        Queue<Node> queue = new LinkedList<>();
         if (node == null) {
             return null;
         }
+        visited.put(node, new Node(node.val, new ArrayList<>()));
+        queue.add(node);
 
-        if (visited.containsKey(node)) {
-            return visited.get(node);
+        while (!queue.isEmpty()) {
+            Node curr = queue.poll();
+
+            for (Node neighbor : curr.neighbors) {
+                if (!visited.containsKey(neighbor)) {
+                    visited.put(neighbor, new Node(neighbor.val, new ArrayList<>()));
+                    queue.add(neighbor);
+                }
+                visited.get(curr).neighbors.add(visited.get(neighbor));
+            }
         }
 
-        Node cloneNode = new Node(node.val, new ArrayList<>());
-        visited.put(node, cloneNode);
-
-        for (Node neighbor : node.neighbors) {
-            cloneNode.neighbors.add(cloneGraph(neighbor));
-        }
-
-        return cloneNode;
+        return visited.get(node);
         
     }
 }
