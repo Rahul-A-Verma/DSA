@@ -9,15 +9,31 @@ class Solution {
         // }
         // return new int[]{-1,-1};
 
-        HashMap <Integer, Integer> map = new HashMap<>();
-        for(int i=0;i<numbers.length;i++){
+        // HashMap <Integer, Integer> map = new HashMap<>();
+        // for(int i=0;i<numbers.length;i++){
           
-            int key = target-numbers[i];
-            if(map.containsKey(key)){
-                return new int[] { map.get(key), i + 1 };
+        //     int key = target-numbers[i];
+        //     if(map.containsKey(key)){
+        //         return new int[] { map.get(key), i + 1 };
+        //     }
+        //       map.put(numbers[i],i+1);
+        // }
+        //   return new int[] {};
+
+        int l=0;
+        int r=numbers.length-1;
+        while(l<r){
+           
+            if(numbers[l]+numbers[r]==target){
+                return new int[]{l + 1, r + 1};
             }
-              map.put(numbers[i],i+1);
+            else if(numbers[l]+numbers[r]>target){
+                r--;
+            }
+            else{
+                l++;
+            }
         }
-          return new int[] {};
+        return new int[]{};
     }
 }
